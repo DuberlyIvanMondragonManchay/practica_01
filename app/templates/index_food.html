@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5 class="text-center">{{ len }} FOODS</h5>
+<div class="container d-grid">
+    <div class="row row-cols-2">
+        {% if foods %}
+        {% for food in foods  %}
+        <div class="col border border-light p-2 text-light rounded" style="background-color: {{ food.color }};">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <div>{{ food.name }}</div>
+                    <div>{{ food.description }}</div>
+                    <div>{{ food.color }}</div>
+                </div>
+
+                <div>
+                    <a href="{% url 'delete_food_view' food.id %}" class="btn btn-warning btn-sm">Delete</a>
+                    <a href="{% url 'update_food_view' food.id %}" class="btn btn-light btn-sm">Edit</a>
+                </div>
+                </div>
+            </div>
+                
+                {% endfor %}
+            {% endif %}
+
+    </div>
+</div>
+{% endblock %}
